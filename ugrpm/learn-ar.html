@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="ar" dir="rtl">
+<head>
+	<title>UGRPM - الرئيسية</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&family=Sofia+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> 	
+	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap" rel="stylesheet"> 
+
+    <link href="css/styles.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="full" class="arabic-font">
+		<h1><a href="index.html">UGRPM</a></h1>
+		<div class="learn">
+            <ul>
+                <li><a href="learn-ar.html">الرئيسية</a></li>
+                <li><a href="roles-ar.html">الوظائف</a></li>
+                <li><a href="groups-ar.html">المجموعات</a></li>
+                <li><a href="group-role-ar.html">مجموعة - وظيفة</a></li>
+                <li><a href="user-role-ar.html">مستخدم - وظيفة</a></li>
+                <li><a href="user-group-ar.html">مستخدم - مجموعة</a></li>
+            </ul>
+            <h3>ما هو  UGRPM</h3>
+            UGRPM  هو عبارة عن مكتبة بسيطة بلغة PHP تستخدم البرمجة الكائنية و تتعامل مع قواعد البيانات من نوع Mysql من خلال وجود اتصال عبر كائن PDO يتم تمريره إلى الباني في الصنف UGRPM.
+            <br>
+           يتم التعامل مع المستخدمين من خلال رقم id خاص بالمستخدم ولا يهم اسم الجدول أو الأعمدة الموجودة في جدول المستخدمين الذي تم إنشاؤه مسبقا.
+        <br>
+            تم بناء المكتبة من قبل سلام الجهني (https://aljehni.com).
+            <h3>الفكرة الأساسية</h3>
+            لنفترض ان لدينا مشروعا بلغة PHP ويحوي نظام مستخدمين، ونحن بحاجة لنمنح بعض المستخدمين إمكانية عمل أشياء معينة و بالمقابل مستخدمين آخرين لا نعطيهم تلك الصلاحيات.
+            <br>
+            المقصود هنا بعمل أشياء معينة هو بالضبط (إمكانية تنفيذ طريقة موجودة في صنف أي method in class).<br>
+            هذه الصلاحية أي تنفيذ طريقة أو  تابع موجود في صنف سنسميها وظيفة أو Role و نكتبها بالشكل:
+
+            <span class="highlight">ClassNamespace@Method</span>.<br>
+            إعطاء كل مستخدم صلاحيات متنوعة عملية مرهقة بعض الشيء لذلك تضمنت المكتبة إمكانية إنشاء مجموعات و إضافة مستخدمين لهذه المجموعات و من ثم إعطاء وظائف للمجموعات ... 
+
+            <br>
+            المستخدم سيكون لديه صلاحياته الخاصة التي أعطيت له و سيكون لديه صلاحيات المجموعات التي ينتمي إليها.
+            
+            <br>
+            عند تنفيذ طريقة ما يمكننا التأكد أن للمستخدم الذي قام بطلبها صلاحيات تنفيذها أم لا.
+
+            <br>
+            <b>UGRPM</b> يعطيك الإمكانية لتنفيذ كل ما ذكر بالأعلى حيث يمكن إنشاء وظائف و مجموعات و إعطاء وظائف لمجموعات أو مستخدمين و إضافة مستخدمين لمجموعات و إزالتهم و عرض وظائف مجموعة أو مستخدم و عرض المجموعات و المستخدمين الذين لهم وظيفة ما و غير ذلك...
+
+            <h3 id="installation">التنصيب</h3>
+            1- استخدم composer لإضافة UGRPM إلى مشروعك.
+            <div class="code">
+                composer require jsalam/ugrpm
+            </div>
+            2- المسار <span class="highlight">vendor/jsalam/ugrpm</span> يحوي مسار اسمه <span class="highlight">sql</span> يحتوي على ملف <span class="highlight">tables.sql</span>, قم باستيراده إلى قاعدة بياناتك.
+            <br>
+            3- لاستخدام UGRPM يجب استدعاء بواسطة <span class="highlight">use</span> UGRPM الصنف و حسب الحاجة الأصناف Role و Group:
+            <div class="code">
+                use Jsalam\UGRPM\{UGRPM,Group,Role};
+            </div>
+            4- لإنشاء كائن من نوع UGRPM استخدم 
+            <div class="code">
+                $ugrpm = new  UGRPM($connect);
+            </div>
+            حيث <span class="highlight">$connect</span> هو كائن PDO للاتصال بقاعدة البيانات لديك.
+            <br>
+            الآن, على سبيل المثال يمكن إنشاء مجموعة في قاعدةالبيانات بالأمر::
+            <div class="code">
+                $group = $ugrpm->createGroup(new  Group(groupName:"Editors",description:"Editors Group"));
+            </div>
+           الخ ...
+            <h3>المراجعات</h3>
+            Github رابط: <a href="https://github.com/salamj/ugrpm">https://github.com/salamj/ugrpm</a>
+            <br>
+           تواصل معي عبر البريد: salamj[at]gmail.com
+            <h3>حقوق النشر و الملكية</h3>
+            المؤلف: سلام الجهني (<a href="https://aljehni.com">aljehni.com</a>)<br>
+            هذه المكتبة منشورة مجانا برخصة MIT <a href="https://github.com/salamj/ugrpm/blob/main/LICENSE">الترخيص</a>.
+        </div>
+
+        </div>
+	</div>
+
+</body>
+</html>

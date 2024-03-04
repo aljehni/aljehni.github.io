@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>UGRPM - Roles</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&family=Sofia+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> 	
+	<link href="css/styles.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="full">
+		<h1><a href="index.html">UGRPM</a></h1>
+		<div class="learn">
+            <ul>
+                <li><a href="learn-en.html">Home</a></li>
+                <li><a href="roles-en.html">Roles</a></li>
+                <li><a href="groups-en.html">Groups</a></li>
+                <li><a href="group-role-en.html">Group - Role</a></li>
+                <li><a href="user-role-en.html">User - Role</a></li>
+                <li><a href="user-group-en.html">User - Group</a></li>
+            </ul>
+            <h3>About Roles</h3>
+            Role contain two properties (id,role).<br>
+            <span class="highlight">id</span> property refers to the role primary id, it's integer number.
+            <br>
+            <span class="highlight">role</span> property refers to the method in class, it has the form <span class="highlight">class\namespace@method</span>.<br>
+            Create role example:
+            <div class="code">
+                $role = new Role(10,"Apps\Content@create");
+            </div>
+            Or
+            <div class="code">
+                $role = new Role(role:"Apps\Content@create");
+            </div>
+            Role class contains these methods you can use:
+            <div class="code">
+                getId()<br>
+                setId(int $id)<br>
+                getRole()<br>
+                setRole(string $role)<br>
+                getRoleClass()<br>
+                setRoleClass(string $class)<br>
+                getRoleMethod()<br>
+                setRoleMethod(string $method)
+            </div>
+            <h3>Work with UGRPM</h3>
+            After create a role object we can add it to database and get it again or get role by it's id ...
+            <br>
+            In the <a href="learn-en.html#installation">Installation section</a> we learned to create a UGRPM object, now we will use it to work with roles and database.<br>
+            Example:
+            <div class="code">
+                use Jsalam\URRPM\UGRPM;<br>
+                use Jsalam\UGRPM\Role;<br><br>
+                $ugrpm = new  UGRPM($connect);<br><br>
+                $role = $ugrpm->createRole(new  Role(role:"App\Content@create"));<br>
+                $getRole = $ugrpm->getRoleById(#ID); // int ID<br>
+                $getRoles1 =$ugrpm->getRolesByClass("Class\Namespace"); // array of Roles<br>
+                $getRoles2 = $ugrpm->getRolesByMethod("create");// array of roles<br>
+                $getRoles3 = $ugrpm->getRoleByClassMethod("App\Content@create");// One role or empty<br>
+                $allRoles = $ugrpm->getAllRoles(); // array of roles<br>
+                // Remove Role<br>
+                $ugrpm->removeRole($role);//true
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

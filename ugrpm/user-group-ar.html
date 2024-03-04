@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html lang="ar" dir="rtl">
+<head>
+	<title>UGRPM - مستخدم مجموعة</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&family=Sofia+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> 	
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap" rel="stylesheet"> 
+	
+    <link href="css/styles.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="full" class="arabic-font">
+		<h1><a href="index.html">UGRPM</a></h1>
+		<div class="learn">
+            <ul>
+                <li><a href="learn-ar.html">الرئيسية</a></li>
+                <li><a href="roles-ar.html">الوظائف</a></li>
+                <li><a href="groups-ar.html">المجموعات</a></li>
+                <li><a href="group-role-ar.html">مجموعة - وظيفة</a></li>
+                <li><a href="user-role-ar.html">مستخدم - وظيفة</a></li>
+                <li><a href="user-group-ar.html">مستخدم - مجموعة</a></li>
+            </ul>
+            <h3>مستخدم - مجموعة</h3>
+           تحوي المجموعات على مستخدمين أي أن بالإمكان إضافة مسخدم (مستخدمين) إلى مجموعة (مجموعات) بعدة طرق بناءا على رقم المستخدم
+            <span class="highlight">#id</span>.
+           <br>
+            مثال:<br>
+            <div class="code">
+                // Add the user with $userId to $group
+                <br>$ugrpm->addUserToGroup($userId,$group);
+                <br>
+                <br>// AddMany users to $group
+                <br>$ugrpm->addUsersToGroup([$userId1,$userId2,...],$group);
+                <br>
+                <br>// Add user to many groups
+                <br>$ugrpm->addUserToGroups($userId,[$group1,$group2,...]);
+                <br>
+                <br>// Add many users to many groups
+                <br>$ugrpm->addUsersToGroups([$uid1,$uid2,$uid3],[$group1,$group2,$group3]);
+                <br>
+                <br>// Remove user from Group
+                <br>$ugrpm->removeUserFromGroup($uid,$group);
+                <br>
+                <br>// Remove user from many groups
+                <br>$ugrpm->removeUserFromGroups($uid,[$group1,$group2,...]);
+                <br>
+                <br>// Remove many users from group
+                <br>$ugrpm->removeUsersFromGroup([$uid1,$uid2,...],$group);
+                <br>
+                <br>// Retrieve user's groups
+                <br> $ugrpm->getUserGroups($userId);
+                <br>
+                <br>// Retrieve group's users
+                <br>$ugrpm->getGroupUsers($group);
+                <br>
+                <br>// Check if user in group
+                <br> $ugrpm->userInGroup($uid,$group);
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

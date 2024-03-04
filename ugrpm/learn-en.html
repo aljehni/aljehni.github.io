@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>UGRPM - Home</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&family=Sofia+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> 	
+	<link href="css/styles.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="full">
+		<h1><a href="index.html">UGRPM</a></h1>
+		<div class="learn">
+            <ul>
+                <li><a href="learn-en.html">Home</a></li>
+                <li><a href="roles-en.html">Roles</a></li>
+                <li><a href="groups-en.html">Groups</a></li>
+                <li><a href="group-role-en.html">Group - Role</a></li>
+                <li><a href="user-role-en.html">User - Role</a></li>
+                <li><a href="user-group-en.html">User - Group</a></li>
+            </ul>
+            <h3>What is  UGRPM</h3>
+            UGRPM is a simple and easy to use PHP object oriented lirbary to manage (Users,Groups,Roles).
+
+            This library use MySql database and PDO Object to connect.
+            
+            It's work with user as his id and don't care what the table you had made or its columns.
+            
+            You must have a database connection and pass it as PDO connection object to the UGRPM constructor.
+            
+            Built by Salam Aljehni (https://aljehni.com).
+            <h3>Main Idea</h3>
+            Suppose we have a PHP project, and there are users in it.
+            <br>We may need to give some user the ability to do somethings and other users don't.
+            <br>That means we want to give some users ability to run methods, methods belongs to classes, so we will give some users the ability to run method or not where methods have the form <span class="highlight">ClassNamespace@Method</span> we will name this "role".
+            <br>
+            To give many users many roles it maybe hard or bored so we can use <span class="highlight">groups</span>
+            <br>
+            User may be in many groups and groups may have many roles and on the other hand user himself may has many roles.
+            <br>
+            When any method run we can check if the user has permission to run it or not.
+            <br>
+            <b>UGRPM</b> give you all you need to do the above example, you can create roles and groups, give groups roles, give users roles, add users to groups, check user roles, get user groups, get groups roles, check group roles,..., and removing (user roles, group roles, user from groups ...).
+
+            <h3 id="installation">Installation</h3>
+            1- Use composer to add UGRPM to your project.
+            <div class="code">
+                composer require jsalam/ugrpm
+            </div>
+            2- In <span class="highlight">vendor/jsalam/ugrpm</span> you will see <span class="highlight">sql</span> directory contains <span class="highlight">tables.sql</span>, import this file to your database.
+            <br>
+            3- To use UGRPM you must <span class="highlight">use</span> UGRPM class:
+            <div class="code">
+                use Jsalam\UGRPM\{UGRPM,Group,Role};
+            </div>
+            4- To create a new object of UGRPM use 
+            <div class="code">
+                $ugrpm = new  UGRPM($connect);
+            </div>
+            Where <span class="highlight">$connect</span> is your PDO connection object.
+            <br>
+            Now, for example, you can create a group in database like this:
+            <div class="code">
+                $group = $ugrpm->createGroup(new  Group(groupName:"Editors",description:"Editors Group"));
+            </div>
+            ... and so on.
+            <h3>Feedback</h3>
+            Github link: <a href="https://github.com/salamj/ugrpm">https://github.com/salamj/ugrpm</a>
+            <br>
+            Contact Me at: salamj[at]gmail.com
+            <h3>Credit</h3>
+            Author: Salam Aljehni (<a href="https://aljehni.com">aljehni.com</a>)<br>
+            This library is published under license MIT <a href="https://github.com/salamj/ugrpm/blob/main/LICENSE">License</a>.
+        </div>
+
+        </div>
+	</div>
+
+</body>
+</html>

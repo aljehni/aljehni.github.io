@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="ar" dir="rtl">
+<head>
+	<title>UGRPM - مستخدم وظيفة</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&family=Sofia+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> 	
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap" rel="stylesheet"> 
+<link href="css/styles.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="full" class="arabic-font">
+		<h1><a href="index.html">UGRPM</a></h1>
+		<div class="learn">
+            <ul>
+                <li><a href="learn-ar.html">الرئيسية</a></li>
+                <li><a href="roles-ar.html">الوظائف</a></li>
+                <li><a href="groups-ar.html">المجموعات</a></li>
+                <li><a href="group-role-ar.html">مجموعة - وظيفة</a></li>
+                <li><a href="user-role-ar.html">مستخدم - وظيفة</a></li>
+                <li><a href="user-group-ar.html">مستخدم - مجموعة</a></li>
+            </ul>
+            <h3>مستخدم - وظيفة</h3>
+            بعد إنشاء وظائف يمكن منح وظائف لمستخدم أو عدة مستخدمين و عرض الوظائف التي يمتلكها مستخدم ما و اختبار إن كان مستخدم يمتلك صاحية وظيفة...
+           <br>
+            مثال:<br>
+            <div class="code">
+                <br>$user1Id = 10;
+                <br>$user2Id = 32
+                <br>
+                <br>$role1 = // ...
+                <br>$role2 = // ...
+                <br>
+                <br>$roles = [$role10,$role20,$role30//,...];
+                <br> // Add $role1 to the user1Id
+                <br>$ugrpm->createUserRole($user1Id,$role1);
+                <br>
+                <br>//Add $roles to the $user2Id
+                <br>$ugrpm->createUserRoles($user2Id,$roles);
+                <br>
+                <br>// Add The $role2 to array of users IDs
+                <br>$ugrpm->createRoleUsers($role2,[19,$user2Id,9]);
+                <br>
+                <br>// Remove $role2 from $user1Id
+                <br>$ugrpm->removeUserRole($user1Id,$role2);
+                <br>
+                <br>// Remove all $roles from the user whos id is 19
+                <br>$ugrpm->removeUserRoles(19,$roles);
+                <br>
+                <br>// Remove the users in the array from the $role2
+                <br>$ugrpm->removeRoleUsers($role2,[22,$use1Id,199]);
+                <br>
+                <br>// Check if $user1Id have the role $role2
+                <br>$ugrpm->userHaveRole($user1Id,$role2);
+                <br>
+                <br>// Get roles belongs to the user $user1Id, His groups'role not included
+                <br>$ugrpm->getUserRoles($user1Id);
+                <br>
+                <br>// Get All roles belongs to the user $user1Id and his groups'role
+                <br>$ugrpm->getAllUserRoles($user2Id);
+                <br>
+                <br>// Retrieve users who have the role $role1
+                <br> $ugrpm->getRoleUsers($role1);
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

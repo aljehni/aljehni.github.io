@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>UGRPM - User Group</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&family=Sofia+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> 	
+	<link href="css/styles.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="full">
+		<h1><a href="index.html">UGRPM</a></h1>
+		<div class="learn">
+            <ul>
+                <li><a href="learn-en.html">Home</a></li>
+                <li><a href="roles-en.html">Roles</a></li>
+                <li><a href="groups-en.html">Groups</a></li>
+                <li><a href="group-role-en.html">Group - Role</a></li>
+                <li><a href="user-role-en.html">User - Role</a></li>
+                <li><a href="user-group-en.html">User - Group</a></li>
+            </ul>
+            <h3>User - Group</h3>
+            Groups have users so we can add, remove user(s) to group(s) using their <span class="highlight">#id</span>.
+           <br>
+            Create User - Role example:<br>
+            <div class="code">
+                // Add the user with $userId to $group
+                <br>$ugrpm->addUserToGroup($userId,$group);
+                <br>
+                <br>// AddMany users to $group
+                <br>$ugrpm->addUsersToGroup([$userId1,$userId2,...],$group);
+                <br>
+                <br>// Add user to many groups
+                <br>$ugrpm->addUserToGroups($userId,[$group1,$group2,...]);
+                <br>
+                <br>// Add many users to many groups
+                <br>$ugrpm->addUsersToGroups([$uid1,$uid2,$uid3],[$group1,$group2,$group3]);
+                <br>
+                <br>// Remove user from Group
+                <br>$ugrpm->removeUserFromGroup($uid,$group);
+                <br>
+                <br>// Remove user from many groups
+                <br>$ugrpm->removeUserFromGroups($uid,[$group1,$group2,...]);
+                <br>
+                <br>// Remove many users from group
+                <br>$ugrpm->removeUsersFromGroup([$uid1,$uid2,...],$group);
+                <br>
+                <br>// Retrieve user's groups
+                <br> $ugrpm->getUserGroups($userId);
+                <br>
+                <br>// Retrieve group's users
+                <br>$ugrpm->getGroupUsers($group);
+                <br>
+                <br>// Check if user in group
+                <br> $ugrpm->userInGroup($uid,$group);
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

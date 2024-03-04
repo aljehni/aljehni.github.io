@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>UGRPM - Groups</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&family=Sofia+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> 	
+	<link href="css/styles.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="full">
+		<h1><a href="index.html">UGRPM</a></h1>
+		<div class="learn">
+            <ul>
+                <li><a href="learn-en.html">Home</a></li>
+                <li><a href="roles-en.html">Roles</a></li>
+                <li><a href="groups-en.html">Groups</a></li>
+                <li><a href="group-role-en.html">Group - Role</a></li>
+                <li><a href="user-role-en.html">User - Role</a></li>
+                <li><a href="user-group-en.html">User - Group</a></li>
+            </ul>
+            <h3>Groups</h3>
+            Group contain three properties (id,groupName,description).<br>
+            <span class="highlight">id</span> property refers to the group primary id, it's integer number.
+            <br>
+            <span class="highlight">groupName</span> property refers to the group name, It's short string.<br>
+            <span class="highlight">description</span> property refers to the group description, It's long text.<br>
+           
+            Create Group example:
+            <div class="code">
+                $group = new Group(7,"Article Editors","Group of article editors users.");
+            </div>
+            Or:
+            <div class="code">
+                $group = new Group(groupName:"Article Editors",description:"Group of article editors users.");
+            </div>
+            Group class contains these methods you can use:
+            <div class="code">
+                getId()<br>
+                setId(int $id)<br>
+                getGroupName()<br>
+                setGroupName(string $groupName)<br>
+                getDescription()<br>
+                setDescription(string $description)<br>
+            </div>
+
+            <h3>Work With UGRPM</h3>
+
+            Insert group to database, retrieve group(s) by (id,groupName) ,get all groups and remove group.
+            <div class="code">
+                use Jsalam\UGRPM\Group;<br>
+                use Jsalam\UGRPM\UGRPM;<br><br>
+                $ugrpm = new  UGRPM($connect);<br><br>
+                $group = $ugrpm->createGroup(new  Group(groupName:"Editors",description:"Editors Group"));<br>
+                $group->setDescription("Group of Editors");<br>
+                $ugrpm->updateGroup($group);<br>
+<br>
+                $group1 = $ugrpm->getGroupById(33);<br>
+                $group2 = $ugrpm->getGroupByGroupName("Gallary Managers");<br>
+<br>
+                $allGroups = $ugrpm->getAllGroups();// array of groups.<br>
+<br>
+                $ugrpm->removeGroup($group);
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

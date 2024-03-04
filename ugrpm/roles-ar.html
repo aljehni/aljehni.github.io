@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="ar" dir="rtl">
+<head>
+	<title>UGRPM - الوظائف</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&family=Sofia+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> 	
+	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap" rel="stylesheet"> 
+
+    <link href="css/styles.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="full" class="arabic-font">
+		<h1><a href="index.html">UGRPM</a></h1>
+		<div class="learn">
+            <ul>
+                <li><a href="learn-ar.html">الرئيسية</a></li>
+                <li><a href="roles-ar.html">الوظائف</a></li>
+                <li><a href="groups-ar.html">المجموعات</a></li>
+                <li><a href="group-role-ar.html">مجموعة - وظيفة</a></li>
+                <li><a href="user-role-ar.html">مستخدم - وظيفة</a></li>
+                <li><a href="user-group-ar.html">مستخدم - مجموعة</a></li>
+            </ul>
+            <h3>الوظائف</h3>
+            تحوي الوظيفة خاصيتين (id,role).<br>
+           الخاصية  <span class="highlight">id</span>تشير إلى الرقم المعرف للوظيفة و هو مفتاح رئيسي في قاعدة البيانات من نوع عدد صحيح.
+            <br>
+            الخاصية<span class="highlight">role</span> تشير إلى الوظيفة التي هي طريقة موجودة في صنف بالشكل <span class="highlight">class\namespace@method</span>.<br>
+            مثال لإنشاء وظيفة:
+            <div class="code">
+                $role = new Role(10,"Apps\Content@create");
+            </div>
+            أو
+            <div class="code">
+                $role = new Role(role:"Apps\Content@create");
+            </div>
+            يمكن تنفيذ الطرق التالية على الكائنات من نوع Role:
+            <div class="code">
+                getId()<br>
+                setId(int $id)<br>
+                getRole()<br>
+                setRole(string $role)<br>
+                getRoleClass()<br>
+                setRoleClass(string $class)<br>
+                getRoleMethod()<br>
+                setRoleMethod(string $method)
+            </div>
+            <h3>التعامل مع UGRPM</h3>
+            بعد إنشاء كائن من نوع Role يمكن إضافته لقاعدة  البيانات و استرجاعه من خلال الرقم المعرف أو الصنف و الطريقة أو استرجاع العديد من الوظائف بناء على الصنف أو الطريقة ...
+            <br>
+           في <a href="learn-en.html#installation">قسم التنصيب</a> تعلمنا كيف ننشئ كائن من نوع UGRPM و الآن سنتعامل مع الوظائف من خلاله.<br>
+            مثال:
+            <div class="code">
+                use Jsalam\URRPM\UGRPM;<br>
+                use Jsalam\UGRPM\Role;<br><br>
+                $ugrpm = new  UGRPM($connect);<br><br>
+                $role = $ugrpm->createRole(new  Role(role:"App\Content@create"));<br>
+                $getRole = $ugrpm->getRoleById(#ID); // int ID<br>
+                $getRoles1 =$ugrpm->getRolesByClass("Class\Namespace"); // array of Roles<br>
+                $getRoles2 = $ugrpm->getRolesByMethod("create");// array of roles<br>
+                $getRoles3 = $ugrpm->getRoleByClassMethod("App\Content@create");// One role or empty<br>
+                $allRoles = $ugrpm->getAllRoles(); // array of roles<br>
+                // Remove Role<br>
+                $ugrpm->removeRole($role);//true
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html lang="ar" dir="rtl">
+<head>
+	<title>UGRPM - المجموعات</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&family=Sofia+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> 	
+	<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap" rel="stylesheet"> 
+
+    <link href="css/styles.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="full" class="arabic-font">
+		<h1><a href="index.html">UGRPM</a></h1>
+		<div class="learn">
+            <ul>
+                <li><a href="learn-ar.html">الرئيسية</a></li>
+                <li><a href="roles-ar.html">الوظائف</a></li>
+                <li><a href="groups-ar.html">المجموعات</a></li>
+                <li><a href="group-role-ar.html">مجموعة - وظيفة</a></li>
+                <li><a href="user-role-ar.html">مستخدم - وظيفة</a></li>
+                <li><a href="user-group-ar.html">مستخدم - مجموعة</a></li>
+            </ul>
+            <h3>المجموعات</h3>
+            تحتوي المجموعة على ثلاثة بارامترات أو خواص وهي:(id,groupName,description).<br>
+            الخاصية <span class="highlight">id</span> تشير إلى رقم معرف المجموعة وهو مفتاح رئيسي في قاعدة البيانات من نوع صحيح.
+            <br>
+            الخاصية <span class="highlight">groupName</span> تشير إلى اسم المجموعة وهي نص قصير.<br>
+            الخاصية <span class="highlight">description</span>تشير إلى وصف المجموعة وهي نص طويل.<br>
+           
+            مثال لإنشاء مجموعة::
+            <div class="code">
+                $group = new Group(7,"Article Editors","Group of article editors users.");
+            </div>
+            أو:
+            <div class="code">
+                $group = new Group(groupName:"Article Editors",description:"Group of article editors users.");
+            </div>
+            يمكن  استخدام الطرق التالية على الكائنات من نوع Group:
+            <div class="code">
+                getId()<br>
+                setId(int $id)<br>
+                getGroupName()<br>
+                setGroupName(string $groupName)<br>
+                getDescription()<br>
+                setDescription(string $description)<br>
+            </div>
+
+            <h3>التعامل بين المجموعات و UGRPM</h3>
+            إضافة مجموعة أو عدة مجموعات و استرجاعها حسب الرقم أو الاسم و التعديل و الحذف و عرض جميع المجموعات ...
+            <div class="code">
+                use Jsalam\UGRPM\Group;<br>
+                use Jsalam\UGRPM\UGRPM;<br><br>
+                $ugrpm = new  UGRPM($connect);<br><br>
+                $group = $ugrpm->createGroup(new  Group(groupName:"Editors",description:"Editors Group"));<br>
+                $group->setDescription("Group of Editors");<br>
+                $ugrpm->updateGroup($group);<br>
+<br>
+                $group1 = $ugrpm->getGroupById(33);<br>
+                $group2 = $ugrpm->getGroupByGroupName("Gallary Managers");<br>
+<br>
+                $allGroups = $ugrpm->getAllGroups();// array of groups.<br>
+<br>
+                $ugrpm->removeGroup($group);
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>

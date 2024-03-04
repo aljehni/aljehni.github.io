@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="ar" dir="rtl">
+<head>
+	<title>UGRPM - مجموعة وظيفة</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	
+	
+	<!-- Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Mali:wght@300&family=Sofia+Sans+Condensed:wght@200&display=swap" rel="stylesheet"> 	
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap" rel="stylesheet"> 
+	
+    <link href="css/styles.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div id="full" class="arabic-font">
+		<h1><a href="index.html">UGRPM</a></h1>
+		<div class="learn">
+            <ul>
+                <li><a href="learn-ar.html">الرئيسية</a></li>
+                <li><a href="roles-ar.html">الوظائف</a></li>
+                <li><a href="groups-ar.html">المجموعات</a></li>
+                <li><a href="group-role-ar.html">مجموعة - وظيفة</a></li>
+                <li><a href="user-role-ar.html">مستخدم - وظيفة</a></li>
+                <li><a href="user-group-ar.html">مستخدم - مجموعة</a></li>
+            </ul>
+            <h3>مجموعة - وظيفة</h3>
+           الآن و بعد إنشاء مجموعات و وظائف يمكننا إسناد وظائف للمجموعات بعدة طرق.
+           <br>
+            مثال للتعامل بين المجموعات و الوظائف:<br>
+            <div class="code">
+                use Jsalam\UGRPM\Group;
+                <br>use Jsalam\UGRPM\Role;
+                <br>use Jsalam\UGRPM\UGRPM;
+                <br>// ... $ugrpm initialized before, see installation section
+                <br>
+                <br>//Roles
+                <br>
+                <br>$roleCreateArticle = $ugrpm->createRole(new  Role(role:"App\Article\create"));
+                <br>$roleEditArticle = $ugrpm->createRole(new  Role(role:"App\Article\edit"));
+                <br>$roleCreateContent = $ugrpm->createRole(new  Role(role:"App\Content\create"));
+                <br>$roleEditContent = $ugrpm->createRole(new  Role(role:"App\Content\edit"));
+                <br>
+                <br> // Groups
+                <br>$createGroup = $ugrpm->createGroup(new  Group(groupName:"Creators",description:"Creators Group"));
+                <br>$editGroup = $ugrpm->createGroup(new  Group(groupName:"Editors",description:"Editors Group"));
+                <br>$manageGroup = $ugrpm->createGroup(new  Group(groupName:"Managers",description:"Managers Group"));
+                <br>
+                <br>$ugrpm->createGroupRole($createGroup,$roleCreateArticle);
+                <br>$ugrpm->createGroupRole($createGroup,$roleCreateContent);
+                <br>
+                <br>// We can do in one:
+                <br>$ugrpm->createGroupRoles($editGroup,[$roleEditArticle,$roleEditContent]);
+                <br>
+                <br>// getting group's roles
+                <br>$ugrpm->createGroupRoles($manageGroup,array_merge($ugrpm->getGroupRoles($createGroup),$ugrpm->getGroupRoles($editGroup)));
+                <br>
+                <br>// get Groups have edit artices role.
+                <br>$groupsEditing = $ugrpm->getRoleGroups($roleEditArticle); // [$createGroup , $manageGroup]
+                <br>
+                <br>// remove group's editing roles
+                <br>$ugrpm->removeGroupRoles($manageGroup,[$roleEditArticle,$roleEditContent]);
+            </div>
+        </div>
+	</div>
+
+</body>
+</html>
