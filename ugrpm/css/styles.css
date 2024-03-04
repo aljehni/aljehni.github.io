@@ -1,0 +1,88 @@
+body{
+	background-color: #eaeaee;
+	font-size: 1.4em;
+	font-family: 'Sofia Sans Condensed', sans-serif;
+	font-weight: 600;
+}
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Mali', cursive;
+}
+.arabic-font h2,.arabic-font h3,.arabic-font h4{
+	font-family: 'Readex Pro', sans-serif;
+}
+a{
+	color:rgb(198, 2, 31);
+	text-decoration: none;
+	padding: 2px;
+}
+a:hover{
+	color:white;
+	background-color: rgb(198, 2, 31);
+
+}
+.arabic-font{
+	font-family: 'Readex Pro', sans-serif;
+}
+#main{
+	text-align: center;
+	max-width: 500px;
+	padding: 10px;
+	margin: 10px auto;
+}
+.desc{
+	border:1px solid #ac9e9e;
+	border-radius: 12px;
+	padding: 10px;
+	box-shadow: 0px 0px 3px 4px #b0b0b0;
+}
+.code{
+	background-color:rgba(0,0,0,0.8);
+	color:#eaeaee;
+	padding: 10px;
+	font-family: 'Courier New', Courier, monospace;
+	margin:2px auto;
+	font-size: 0.8em;
+	max-width: 500px;
+	font-weight: 200;
+	direction: ltr;
+	text-align: left;
+	
+}
+.learn{
+	border:1px solid #ac9e9e;
+	border-radius: 12px;
+	padding: 10px;
+	box-shadow: 0px 0px 3px 4px #b0b0b0;
+}
+#full{
+	margin:10px auto;
+	padding:20px;
+}
+#full h1{
+	text-align: center;
+}
+#learn h3{
+	border-bottom: 2px solid rgb(198, 2, 31);
+}
+ul{
+	list-style-type: none;
+	text-align: center;
+
+}
+ul li{
+	display: inline-block;
+	margin:10px 5%;
+	font-weight: bold;
+}
+.highlight{
+	background-color: rgba(198, 2, 31,0.2);
+}
+#full .code{
+	margin:12px;
+	max-width: 90%;
+	overflow-x: scroll;
+}
+.desc h4{
+	display: inline-block;
+	margin:2px 10px;
+}
